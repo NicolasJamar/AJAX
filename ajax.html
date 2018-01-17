@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>AJAX</title>
-	<script type="text/javascript" src="jquery.js"></script>
+	<!-- <script type="text/javascript" src="jquery.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
 </head>
 <body>
@@ -12,23 +13,40 @@
 	</div>
 
 	<script type="text/javascript">
-		var coucou = new XMLHttpRequest();
-		coucou.onreadystatechange = function(){
-			if (coucou.readyState === 4) {
-				$('#ajax').innerHTML = coucou.responseText;
-			}
-		};
-		coucou.open('GET', 'server.html');
-		$('#clic').click(function sendAJAX(){
-			coucou.send();
-			$('#clic').css('display', 'none');
-		});
-		// coucou.send();
+		$(document).ready(function(){
 
-		// $('button').click(function sendAJAX(){
-		// 	// coucou.send();
-		// 	$('button').css('display', 'none');
+		// var coucou = new XMLHttpRequest();
+		// coucou.onreadystatechange = function(){
+		// 	if (coucou.readyState === 4) {
+		// 		$('#ajax').html(coucou.responseText);
+		// 	}
+		// };
+		// coucou.open('GET', 'https://nicolasjamar.github.io/AJAX/server.html');
+		
+		// $('#clic').click(function sendAJAX(){
+		// 	coucou.send();
+		// 	$('#clic').css('display', 'none');
 		// });
+		
+		
+		$('#clic').click(function(){
+			// $.ajax({
+			// 	url : "https://nicolasjamar.github.io/AJAX/server.html",
+			// 	type :'GET',
+			// 	dataType : 'https',
+			// 	success : function (code_https){
+			// 		$('#click').html();
+			// 		$(code_https).appendTo("#clic");
+			// 	}
+
+			// })
+			$('#clic').load('https://nicolasjamar.github.io/AJAX/server.html');
+		});
+
+
+
+
+	});
 
 	</script>
 	
