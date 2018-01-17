@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Météo</title>
+	<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+ 	 <link rel="stylesheet" href="main.css">
+	<!-- <script type="text/javascript" src="jquery.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+</head>
+<body>
+
+
+	<div class="grid-container centered">
+		<div class="grid-100">
+			<div class="contained">
+				<div class="grid-100">
+					<div class="heading">
+						<h1>London's weather</h1>
+						
+					</div>
+					<ul class="filter-select">
+						<li><button>Which weather in London ?</button></li>
+						
+					</ul>
+				</div>
+
+				<div id="weather">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// $('button').click(function(){
+
+			// })
+			// $.getJSON(1.URL de l API, 2.les infos qu on doit prendre sur le fichier JSON, 3.Comment dispose-t-on les données)
+
+			var weather = data;
+
+			$('button').click(function () {
+			 
+			   // the AJAX part
+			   // var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+			   // var animal = $(this).text();
+			   // var flickrOptions = {
+			   //   tags: animal,
+			   //   format: "json"
+			   // };
+			   // function displayPhotos(data) {
+			   //   var photoHTML = '<ul>';
+			   //   $.each(data.items,function(i,photo) {
+			   //     photoHTML += '<li class="grid-25 tablet-grid-50">';
+			   //     photoHTML += '<a href="' + photo.link + '" class="image">';
+			   //     photoHTML += '<img src="' + photo.media.m + '"></a></li>';
+			   //   }); // end each
+			   //   photoHTML += '</ul>';
+			   //   $('#photos').html(photoHTML);
+			   // }
+
+			   // var weatherLondon = $('button').text()
+
+			   $.getJSON(
+			   	'http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22',
+			   	{
+			   		format : "json"
+			   	}, 
+			   	function weatherLondon(data){
+			   		
+			   		$('#weather').html(weather.main.temp);
+
+			   	}
+			   	);
+
+			 }); // end click
+
+			console.log(weather.main.temp);
+	});
+
+	</script>
+	
+</body>
+</html>

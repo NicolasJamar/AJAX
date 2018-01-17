@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX</title>
+	<!-- <script type="text/javascript" src="jquery.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+</head>
+<body>
+	<div id="ajax">
+		<button id="clic">Bouton AJAX</button>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if (xhr.readyState === 4) {
+				$('#ajax').html(xhr.responseText);
+			}
+		};
+		xhr.open('GET', 'https://nicolasjamar.github.io/AJAX/server.html');
+		
+		$('#clic').click(function sendAJAX(){
+			xhr.send();
+			$('#clic').css('display', 'none');
+		});
+		
+		console.log(xhr);
+		
+		// $('#clic').click(function(){
+		// 	$.ajax({
+		// 		url : "https://nicolasjamar.github.io/AJAX/server.html",
+		// 		type :'GET',
+		// 		dataType : 'https',
+		// 		success : function (){
+		// 			$('#ajax').html('url');
+		// 			// $(code_https).appendTo("#clic");
+		// 		}
+		// 	})
+
+		// 	$('#ajax').load('https://nicolasjamar.github.io/AJAX/server.html');
+		// 	$('#clic').css('display', 'none');
+		// });
+
+
+
+
+	});
+
+	</script>
+	
+</body>
+</html>
