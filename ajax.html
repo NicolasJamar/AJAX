@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	
+</head>
+<body>
+	<div id="ajax">
+		<button id="clic">Bouton AJAX</button>
+	</div>
+
+	<script type="text/javascript">
+		var coucou = new XMLHttpRequest();
+		coucou.onreadystatechange = function(){
+			if (coucou.readyState === 4) {
+				$('#ajax').innerHTML = coucou.responseText;
+			}
+		};
+		coucou.open('GET', 'server.html');
+		$('#clic').click(function sendAJAX(){
+			coucou.send();
+			$('#clic').css('display', 'none');
+		});
+		// coucou.send();
+
+		// $('button').click(function sendAJAX(){
+		// 	// coucou.send();
+		// 	$('button').css('display', 'none');
+		// });
+
+	</script>
+	
+</body>
+</html>
