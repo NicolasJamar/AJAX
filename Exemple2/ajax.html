@@ -5,7 +5,6 @@
 	<title>AJAX</title>
 	<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
  	 <link rel="stylesheet" href="main.css">
-	<!-- <script type="text/javascript" src="jquery.js"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
 </head>
@@ -17,18 +16,18 @@
 			<div class="contained">
 				<div class="grid-100">
 					<div class="heading">
-						<h1>Flickr Photo Feeder</h1>
-						<p>Choose which kind of animal you'd like to return photos of...</p>
+						<h1>Flickr Photos</h1>
+						<p>Appuie sur le bouton pour voir les dernières images stockées dans Flickr</p>
 					</div>
 					<ul class="filter-select">
-						<li><button>Dog</button></li>
-						<li><button>Cat</button></li>
-						<li><button>Eagle</button></li>
+						<li><button>toto</button></li>
+						<li><button>titi</button></li>
+						<li><button>choucroute</button></li>
 					</ul>
 				</div>
 
 				<div id="photos">
-
+					
 				</div>
 			</div>
 		</div>
@@ -36,36 +35,44 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			// $('button').click(function(){
-
-			// })
-			// $.getJSON(1.URL de l API, 2.les infos qu on doit prendre sur le fichier JSON, 3.Comment dispose-t-on les données)
-
 			$('button').click(function () {
-			 
-			   // the AJAX part
-			   var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-			   var animal = $(this).text();
-			   var flickrOptions = {
-			     tags: animal,
-			     format: "json"
-			   };
-			   function displayPhotos(data) {
-			     var photoHTML = '<ul>';
-			     $.each(data.items,function(i,photo) {
+			 	var flickrAPI = 'https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
+			 	var animal = $(this).text();
+			 	var flickrOptions = {
+			 		tags : animal,
+			 		format :'json'
+			 	};
+			 	function displayPhotos (data){
+			 		var photoHTML = '';
+			     $.each(data.items,function(i,photo) {   //"items" = le nom de l'array dans le JSON
 			       photoHTML += '<li class="grid-25 tablet-grid-50">';
-			       photoHTML += '<a href="' + photo.link + '" class="image">';
-			       photoHTML += '<img src="' + photo.media.m + '"></a></li>';
+			       photoHTML += '<a href="' + photo.link + '" class="image">'; //".link" = tag dans le JSON
+			       photoHTML += '<img src="' + photo.media.m + '"></a></li>'; //".media.m" = tag dans un tag dans le JSON
 			     }); // end each
-			     photoHTML += '</ul>';
+			     photoHTML = '<ul>'+photoHTML+'</ul>';
 			     $('#photos').html(photoHTML);
-			   }
-			   $.getJSON(flickerAPI, flickrOptions, displayPhotos);
-
+			 	}
+			   
+			   $.getJSON(flickrAPI, flickrOptions, displayPhotos);
+			   // $.getJSON(1.URL de l API, 2.les infos qu on doit prendre sur le fichier JSON, 3.Comment dispose-t-on les données)
 			 }); // end click
-	});
+		});
 
 	</script>
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
