@@ -17,13 +17,13 @@
 				<div class="grid-100">
 					<div class="heading">
 						<h1>Flickr Photos</h1>
-						<p>Appuie sur le bouton pour voir les dernières images stockées dans Flickr</p>
+						<p>Appuie sur le bouton pour voir les dernières images importées dans Flickr</p>
 					</div>
-					<ul class="filter-select">
-						<li><button>toto</button></li>
-						<li><button>titi</button></li>
-						<li><button>choucroute</button></li>
-					</ul>
+					<form>
+			           
+			              <input type="search" name="search" id="search">
+			              <input type="submit" value="Search" id="submit">
+            		</form>
 				</div>
 
 				<div id="photos">
@@ -35,9 +35,18 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('button').click(function () {
-			 	var flickrAPI = 'https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
-			 	var animal = $(this).text();
+			
+			  var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+
+
+			  $("#search").autocomplete({
+			  	source: flickrAPI;
+			  });
+			
+			 $('form').submit(function (evt) {
+			    evt.preventDefault();
+
+			 	var animal = $("#search").val();
 			 	var flickrOptions = {
 			 		tags : animal,
 			 		format :'json'
@@ -56,7 +65,41 @@
 			   $.getJSON(flickrAPI, flickrOptions, displayPhotos);
 			   // $.getJSON(1.URL de l API, 2.les infos qu on doit prendre sur le fichier JSON, 3.Comment dispose-t-on les données)
 			 }); // end click
-		});
+
+			}); // end click
+
+
+// $( function() {
+// 			    var availableTags = [
+// 			      "ActionScript",
+// 			      "AppleScript",
+// 			      "Asp",
+// 			      "BASIC",
+// 			      "C",
+// 			      "C++",
+// 			    ];
+// 			    $( "#tags" ).autocomplete({
+// 			      source: availableTags
+// 			    });
+// 					});
+
+// var xhr = getXMLHttpRequest();
+
+// xhr.onreadystatechange = function() {
+//     if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+//         alert("OK"); // C'est bon \o/
+//     }
+
+// };
+
+// xhr.open("GET", "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", true);
+// xhr.send(null);
+
+
+
+// 			}); // end ready
+
+// 			  
 
 	</script>
 
